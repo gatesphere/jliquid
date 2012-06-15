@@ -4,10 +4,8 @@
 
 package suschord.jliquid;
 
-import java.util.*;
 import suschord.jliquid.*;
 
-public class JLiquidNode {
-  
-
+public interface JLiquidFilterFunction<T> {
+  public boolean operate(T in);
 }

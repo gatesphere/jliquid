@@ -4,10 +4,6 @@
 
 package suschord.jliquid;
 
-import java.util.*;
-import suschord.jliquid.*;
-
-public class JLiquidNode {
-  
-
+public interface JLiquidFunction<T, U> {
+  public U operate(T in);
 }
