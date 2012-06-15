@@ -8,7 +8,7 @@ import java.util.*;
 import suschord.jliquid.*;
 
 public class JLiquidClock {
-  private ArrayList<JLiquidTask> tasks;
+  private ArrayList<JLiquidTask> tasks = new ArrayList<JLiquidTask>();
   private boolean running = false;
   private int tickNum = 0;
   
