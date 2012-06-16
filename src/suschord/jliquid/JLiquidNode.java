@@ -8,7 +8,7 @@ import java.util.*;
 import suschord.jliquid.*;
 
 public class JLiquidNode<T, U> {
-  private JLiquidFunction<T,U> body;
+  public JLiquidFunction<T,U> body;
   private ArrayList<JLiquidEdge> edges = new ArrayList<JLiquidEdge>();
   private Object data = null;
   private JLiquidTask parent = null;
