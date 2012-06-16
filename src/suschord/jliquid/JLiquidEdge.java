@@ -15,10 +15,9 @@ public class JLiquidEdge<T, U> {
   public boolean isEmpty() { return this.data == null; }
   public void registerParent(JLiquidNode node) { this.parent = node; }
   
+  @SuppressWarnings("unchecked")
   public boolean condition(Object in) {
-    if (in instanceof T)
-      return this.filter.operate((T)in);
-    return false;
+    return this.filter.operate((T)in);
   }
   
   public void feed(Object in) { this.data = in; }
@@ -30,10 +29,10 @@ public class JLiquidEdge<T, U> {
     }
   }
   
+  @SuppressWarnings("unchecked")
   public void calculate() {
     if (this.data != null)
-      if (this.data instanceof T)
-        this.data = this.body.operate((T)this.data);
+      this.data = this.body.operate((T)this.data);
       // else
       //   raise type mismatch exception
   }

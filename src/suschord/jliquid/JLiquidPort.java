@@ -11,6 +11,6 @@ public class JLiquidPort {
   private LinkedList<Object> contents = new LinkedList<Object>();
   
   public void push(Object in) { this.contents.add(in); }
-  public Object pop() { this.contents.poll(); }
-  public int size() { this.contents.size(); }
+  public Object pop() { return this.contents.poll(); }
+  public int size() { return this.contents.size(); }
 }

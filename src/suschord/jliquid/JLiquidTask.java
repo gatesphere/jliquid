@@ -14,7 +14,7 @@ public class JLiquidTask {
   private ArrayList<JLiquidNode> nodes = new ArrayList<JLiquidNode>();
   private boolean sealed = false;
   
-  public booelan isSealed() { return this.sealed; }
+  public boolean isSealed() { return this.sealed; }
   public void seal() { this.sealed = true; }
   public void unseal() { this.sealed = false; }
   
@@ -25,7 +25,7 @@ public class JLiquidTask {
     return true;
   }
   
-  private boolean workToDo() { return !(this.isEmpty() && this.input.size() == 0); }
+  protected boolean workToDo() { return !(this.isEmpty() && this.input.size() == 0); }
   
   public void registerNode(JLiquidNode node) {
     this.nodes.add(node);
@@ -59,6 +59,5 @@ public class JLiquidTask {
   public void calculate() {
     for (JLiquidNode n : this.nodes)
       n.calculate();
-    }
   }
 }

@@ -35,7 +35,7 @@ public class JLiquidNode<T, U> {
       for (JLiquidEdge e : this.edges)
         if (e.condition(this.data)) {
           e.feed(this.data);
-          this.data = nil;
+          this.data = null;
           break;
         }
     }
@@ -46,9 +46,10 @@ public class JLiquidNode<T, U> {
     */
   }
   
+  @SuppressWarnings("unchecked")
   public void calculate() {
     if (this.data != null)
-      this.data = this.body.operate(this.data);
+      this.data = this.body.operate((T)this.data);
     for (JLiquidEdge e : this.edges)
       e.calculate();
   }
