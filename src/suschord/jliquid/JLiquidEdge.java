@@ -10,6 +10,10 @@ public class JLiquidEdge<T, U> {
   private JLiquidNode destination;
   private Object data;
   private JLiquidNode parent;
+  private boolean marked = false;
+
+  protected void mark() { this.marked = true; }
+  protected void unmark() { this.marked = false; }
 
   public void registerDestination(JLiquidNode dest) { this.destination = dest; }
   public boolean isEmpty() { return this.data == null; }
@@ -17,13 +21,14 @@ public class JLiquidEdge<T, U> {
   
   @SuppressWarnings("unchecked")
   public boolean condition(Object in) {
+    if (in == null) return false;
     return this.filter.operate((T)in);
   }
   
-  public void feed(Object in) { this.data = in; }
+  public void feed(Object in) { this.unmark(); this.data = in; }
   
   public void load() {
-    if (this.data != null) {
+    if (this.data != null && this.marked) {
       this.destination.feed(this.data);
       this.data = null;
     }
@@ -31,8 +36,9 @@ public class JLiquidEdge<T, U> {
   
   @SuppressWarnings("unchecked")
   public void calculate() {
-    if (this.data != null)
+    if (this.data != null) {
       this.data = this.body.operate((T)this.data);
+    }
       // else
       //   raise type mismatch exception
   }

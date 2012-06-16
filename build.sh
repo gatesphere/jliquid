@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CP=.
 SRC_DIR=src/suschord/jliquid/
 TEST_DIR=$SRC_DIR/test/
+CP=classes/:.
 CLASS_DIR=classes/
 
 echo "Building..."

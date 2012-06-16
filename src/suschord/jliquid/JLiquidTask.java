@@ -48,7 +48,11 @@ public class JLiquidTask {
   
   public void load() {
     for (JLiquidNode n : this.nodes)
+      n.mark();
+    for (JLiquidNode n : this.nodes)
       n.load();
+    for (JLiquidNode n : this.nodes)
+      n.unmark();
     if (this.isEmpty() && this.isSealed()) this.unseal();
     if (this.input.size() != 0 && !this.isSealed()) {
       this.nodes.get(0).feed(this.input.pop());

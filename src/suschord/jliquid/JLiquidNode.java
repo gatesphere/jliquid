@@ -12,6 +12,17 @@ public class JLiquidNode<T, U> {
   private ArrayList<JLiquidEdge> edges = new ArrayList<JLiquidEdge>();
   private Object data = null;
   private JLiquidTask parent = null;
+  private boolean marked = false;
+  
+  protected void mark() {
+    for (JLiquidEdge e : this.edges) e.mark();
+    this.marked = true;
+  }
+  
+  protected void unmark() {
+    for (JLiquidEdge e : this.edges) e.unmark();
+    this.marked = false;
+  }
   
   public boolean isEmpty() {
     if (this.data != null) return false;
@@ -27,11 +38,11 @@ public class JLiquidNode<T, U> {
   }
   
   public void registerParent(JLiquidTask task) { this.parent = task; }
-  public void feed(Object in) { this.data = in; }
+  public void feed(Object in) { this.unmark(); this.data = in; }
   
   public void load() {
     for (JLiquidEdge e : this.edges) e.load();
-    if (this.data != null) {
+    if (this.marked && (this.data != null)) {
       for (JLiquidEdge e : this.edges)
         if (e.condition(this.data)) {
           e.feed(this.data);
