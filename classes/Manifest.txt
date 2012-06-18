@@ -1,0 +1,7 @@
+Name: java/util/
+Specification-Title: jliquid
+Specification-Version: 0.1
+Specification-Vendor: Jacob Peck
+Implementation-Title: suschord.jliquid
+Implementation-Version: 0.1
+Implementation-Vendor: Jacob Peck

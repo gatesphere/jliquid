@@ -5,6 +5,6 @@ CLASS_DIR=classes
 echo "Cleaning..."
 
 # Remove java class binaries
-rm -rf $CLASS_DIR/*
+rm -rf $CLASS_DIR/suschord
 
 echo "Done."
