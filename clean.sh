@@ -6,5 +6,6 @@ echo "Cleaning..."
 
 # Remove java class binaries
 rm -rf $CLASS_DIR/suschord
+rm *.jar
 
 echo "Done."
