@@ -4,6 +4,6 @@
 
 package suschord.jliquid;
 
-public interface JLiquidFunction<T, U> {
-  public U operate(T in);
+public abstract class JLiquidFunction<T, U> extends JLiquidAbstractFunction {
+  public abstract U operate(T in);
 }

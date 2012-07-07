@@ -6,6 +6,6 @@ package suschord.jliquid;
 
 import suschord.jliquid.*;
 
-public interface JLiquidFilterFunction<T> {
-  public boolean operate(T in);
+public abstract class JLiquidFilterFunction<T> extends JLiquidAbstractFunction {
+  public abstract boolean operate(T in);
 }

@@ -7,12 +7,8 @@ package suschord.jliquid;
 import java.util.*;
 import suschord.jliquid.*;
 
-public class JLiquidNode<T, U> {
-  public JLiquidFunction<T,U> body;
+public class JLiquidNode<T, U> extends JLiquidAbstractNode<T, U> {
   private ArrayList<JLiquidEdge> edges = new ArrayList<JLiquidEdge>();
-  private Object data = null;
-  private JLiquidTask parent = null;
-  private boolean marked = false;
   
   protected void mark() {
     for (JLiquidEdge e : this.edges) e.mark();
@@ -34,11 +30,8 @@ public class JLiquidNode<T, U> {
   
   public void registerEdge(JLiquidEdge edge) {
     this.edges.add(edge);
-    edge.registerParent(this);
+    edge.registerParent(this.parent);
   }
-  
-  public void registerParent(JLiquidTask task) { this.parent = task; }
-  public void feed(Object in) { this.unmark(); this.data = in; }
   
   public void load() {
     for (JLiquidEdge e : this.edges) e.load();

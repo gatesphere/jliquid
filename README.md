@@ -9,6 +9,5 @@ See [license/license.txt](https://raw.github.com/gatesphere/jliquid/master/licen
 
 To do
 -----
-  - Restructure: OO-hierarchy, reduce code replication
-  - Function Classes: references to parent (to support out, die, detach, error, etc.)
+  - I/O methods -> out, error, die, detach
   - More tests

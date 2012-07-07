@@ -111,7 +111,7 @@ public class Fib {
     fib_machine.addInput(x);
     
     // some explanation:
-    System.out.println("This machine calculates the 13th Fibonacci number (should be 13).");
+    System.out.println("This machine calculates the 5th Fibonacci number (should be 13).");
     
     // start the machine!
     clock.start();
