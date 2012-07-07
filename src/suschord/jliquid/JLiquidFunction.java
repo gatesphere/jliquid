@@ -4,6 +4,6 @@
 
 package suschord.jliquid;
 
-public abstract class JLiquidFunction<T, U> extends JLiquidAbstractFunction {
+public abstract class JLiquidFunction<T, U> extends JLiquidAbstractEntity {
   public abstract U operate(T in);
 }

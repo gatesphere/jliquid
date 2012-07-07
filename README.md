@@ -9,5 +9,4 @@ See [license/license.txt](https://raw.github.com/gatesphere/jliquid/master/licen
 
 To do
 -----
-  - I/O methods -> out, error, die, detach
   - More tests

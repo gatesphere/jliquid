@@ -4,11 +4,11 @@
 
 package suschord.jliquid;
 
-import java.util.*;
+import java.util.concurrent.*;
 import suschord.jliquid.*;
 
 public class JLiquidClock {
-  private ArrayList<JLiquidTask> tasks = new ArrayList<JLiquidTask>();
+  private CopyOnWriteArrayList<JLiquidTask> tasks = new CopyOnWriteArrayList<JLiquidTask>();
   private boolean running = false;
   private int tickNum = 0;
   
@@ -16,7 +16,7 @@ public class JLiquidClock {
   public boolean posEdge() { return this.tickEdge(); }
   public boolean negEdge() { return !this.tickEdge(); }
   
-  public void registerTask(JLiquidTask task) { this.tasks.add(task); }
+  public void registerTask(JLiquidTask task) { this.tasks.add(task); task.registerParent(this); }
   public void deregisterTask(JLiquidTask task) { this.tasks.remove(task); }
   
   public void start() { this.run(); }

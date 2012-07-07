@@ -42,7 +42,7 @@ public class Fib {
     
     JLiquidFunction<Object, Object> speak = new JLiquidFunction<Object, Object>() {
       public Object operate(Object in) {
-        System.out.println(in);
+        this.out(in);
         return in;
       }
     };
@@ -79,29 +79,29 @@ public class Fib {
       }
     };
     
-    // assign behaviors
-    start.body = echo;
-    talk.body = speak;
-    end.body = empty;
+    // register the nodes to the task
+    fib_machine.registerNode(start);
+    fib_machine.registerNode(talk);
+    fib_machine.registerNode(end);
     
-    calc.body = nextfib;
-    calc.filter = calcfilter;
-    calc.registerDestination(start);
-    done.body = prepare;
-    done.filter = acceptall;
-    done.registerDestination(talk);
-    bye.body = echo;
-    bye.filter = acceptall;
-    bye.registerDestination(end);
+    // assign behaviors
+    start.registerBody(echo);
+    talk.registerBody(speak);
+    end.registerBody(empty);
     
     start.registerEdge(calc);
     start.registerEdge(done);
     talk.registerEdge(bye);
     
-    // register the nodes to the task
-    fib_machine.registerNode(start);
-    fib_machine.registerNode(talk);
-    fib_machine.registerNode(end);
+    calc.registerBody(nextfib);
+    calc.registerFilter(calcfilter);
+    calc.registerDestination(start);
+    done.registerBody(prepare);
+    done.registerFilter(acceptall);
+    done.registerDestination(talk);
+    bye.registerBody(echo);
+    bye.registerFilter(acceptall);
+    bye.registerDestination(end);
     
     // add some initial input
     ArrayList<Integer> x = new ArrayList<Integer>();
@@ -116,5 +116,7 @@ public class Fib {
     // start the machine!
     clock.start();
     
+    // get the output
+    System.out.println(output.pop());
   }
 }

@@ -6,10 +6,9 @@ package suschord.jliquid;
 
 import suschord.jliquid.*;
 
-public abstract class JLiquidAbstractNode<T, U> {
+public abstract class JLiquidAbstractNode<T, U> extends JLiquidAbstractEntity {
   public JLiquidFunction<T,U> body;
   protected Object data = null;
-  protected JLiquidTask parent = null;
   protected boolean marked = false;
   
   protected void mark() { this.marked = true; }
@@ -24,8 +23,7 @@ public abstract class JLiquidAbstractNode<T, U> {
     this.body = b;
     b.registerParent(this.parent);
   }
-  
-  public void registerParent(JLiquidTask task) { this.parent = task; }
+
   public void feed(Object in) { this.unmark(); this.data = in; }
   
   public abstract void load();
